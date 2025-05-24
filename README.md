@@ -82,3 +82,131 @@ Mais tous partagent le **même noyau Linux** de l’hôte.
 | Ressources | Faible consommation | Plus coûteux            |
 
 ---
+
+## 🧱 Conteneurs sans orchestration : qu’est-ce que ça veut dire ?
+
+Cela signifie gérer **manuellement** le cycle de vie des containers :
+➡️ Lancement, arrêt, mise à jour, réseau, stockage, logs, etc., **à la main ou avec des scripts**.
+
+---
+
+## 🧰 Outils utilisés
+
+* **Docker** (le plus courant)
+* **Podman** (alternative rootless à Docker)
+* **containerd / runc** (runtime en arrière-plan, utilisé par Kubernetes)
+
+---
+
+## 📦 Quand utiliser les containers sans orchestrateur ?
+
+### ✅ Cas d’usage valables :
+
+* Environnement de **développement local**
+* **Petits projets auto-hébergés** (site perso, blog, scripts, etc.)
+* **CI/CD** : tests dans des containers isolés
+* **Formation / PoC** (Proof of Concept)
+
+### ❌ Pas adapté à :
+
+* Haute disponibilité
+* Scalabilité automatique
+* Monitoring centralisé
+* Réseaux multi-nœuds complexes
+
+---
+
+## 🔁 Gestion manuelle d’un container (Docker)
+
+### ➤ Démarrer un container
+
+```bash
+docker run -d --name monweb -p 8080:80 nginx
+```
+
+### ➤ Voir les containers actifs
+
+```bash
+docker ps
+```
+
+### ➤ Voir les logs
+
+```bash
+docker logs monweb
+```
+
+### ➤ Entrer dans un container
+
+```bash
+docker exec -it monweb sh
+```
+
+### ➤ Supprimer un container
+
+```bash
+docker rm -f monweb
+```
+
+---
+
+## 🔌 Réseau entre containers (sans orchestrateur)
+
+Par défaut, Docker crée un **réseau bridge**. Tu peux créer ton propre réseau pour faire dialoguer plusieurs containers :
+
+```bash
+docker network create monreseau
+
+docker run -d --name db --network monreseau mysql
+
+docker run -d --name app --network monreseau myapp
+```
+
+* Ici, `app` peut appeler `db` avec `db:3306`
+
+---
+
+## 💾 Partage de données (volumes)
+
+```bash
+docker run -v /host/data:/app/data myapp
+```
+
+Ou avec un **volume nommé** :
+
+```bash
+docker volume create mes-donnees
+
+docker run -v mes-donnees:/app/data myapp
+```
+
+---
+
+## 🧪 Simulation basique d'orchestration
+
+Tu peux bricoler un peu d’automatisation avec :
+
+* **Docker Compose** : orchestration simple sur une seule machine.
+* **systemd** : pour relancer des containers au démarrage ou après crash.
+* **Scripts shell** : enchaîner des `docker run`, `docker logs`, etc.
+
+---
+
+## 📌 Limites sans orchestrateur
+
+| Fonction                | Sans orchestration   | Avec Kubernetes               |
+| ----------------------- | -------------------- | ----------------------------- |
+| Redémarrage automatique | manuel / script      | natif (`restartPolicy`)       |
+| Mise à l’échelle        | manuel (run X times) | `kubectl scale`               |
+| Mise à jour progressive | pas supportée        | `RollingUpdate`               |
+| Surveillance            | logs/ps/top          | Prometheus / Grafana / probes |
+| Répartition de charge   | manuel               | automatique (`Service`)       |
+
+---
+
+## 🎯 Conclusion
+
+> Utiliser des containers **sans orchestration** reste très pertinent **dans des contextes simples ou locaux**.
+> Pour des systèmes complexes, il vaut mieux basculer vers **Docker Compose**, puis **Kubernetes** ou autres orchestrateurs.
+
+---
