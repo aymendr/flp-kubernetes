@@ -210,3 +210,41 @@ Tu peux bricoler un peu d’automatisation avec :
 > Pour des systèmes complexes, il vaut mieux basculer vers **Docker Compose**, puis **Kubernetes** ou autres orchestrateurs.
 
 ---
+
+Voici un résumé clair et structuré des **fonctionnalités d'orchestration** dans un environnement de conteneurs (comme Kubernetes, Docker Swarm ou Nomad).
+
+---
+
+## 🚀 Qu’est-ce que l’orchestration de conteneurs ?
+
+L’orchestration consiste à **automatiser le déploiement, la gestion, la mise à l’échelle et la mise en réseau** de conteneurs.
+Elle devient indispensable quand on passe de quelques conteneurs à **des dizaines ou centaines répartis sur plusieurs machines**.
+
+---
+
+## ⚙️ Fonctionnalités principales d’un orchestrateur (ex: Kubernetes)
+
+| Fonctionnalité                            | Description                                                                         |
+| ----------------------------------------- | ----------------------------------------------------------------------------------- |
+| 🔁 **Déploiement automatisé**             | Lancement de containers à partir de fichiers déclaratifs (`YAML`, `Compose`, etc.). |
+| 💥 **Redémarrage automatique**            | Relance automatique des containers en cas de crash ou d'erreur (`restartPolicy`).   |
+| 📊 **Mise à l’échelle automatique**       | Ajuste dynamiquement le nombre de réplicas selon la charge (CPU, mémoire).          |
+| 🔄 **Rolling updates & rollback**         | Mise à jour progressive sans downtime, avec possibilité de retour arrière.          |
+| 🔗 **Service discovery & Load balancing** | Attribution automatique de noms DNS et équilibrage de charge entre containers.      |
+| 🧠 **Scheduling intelligent**             | Planification des conteneurs sur les nœuds selon les ressources et contraintes.     |
+| 🔐 **Sécurité & isolement**               | Gestion fine des accès (RBAC), secrets, politiques réseau, namespaces.              |
+| 📦 **Gestion des volumes**                | Montage automatique de volumes persistants (cloud ou locaux).                       |
+| 📈 **Monitoring et logs**                 | Intégration avec Prometheus, Grafana, Fluentd, etc.                                 |
+| 📡 **Networking multi-nœuds**             | Crée un réseau plat entre containers répartis sur plusieurs serveurs.               |
+
+---
+
+## 🗂️ Exemples d'orchestrateurs populaires
+
+| Outil                 | Particularités                                                |
+| --------------------- | ------------------------------------------------------------- |
+| **Kubernetes**        | Standard de facto, très complet, puissant mais complexe       |
+| **Docker Swarm**      | Plus simple, intégré à Docker, mais moins utilisé aujourd’hui |
+| **Nomad** (HashiCorp) | Léger, multi-workload (containers + VMs + autres)             |
+
+---
