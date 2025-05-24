@@ -293,3 +293,33 @@ kubectl delete pod pod-nom                # supprimer un pod
 ```
 
 ---
+
+## 🌐 Qu’est-ce qu’une distribution Kubernetes ?
+
+Une **distribution Kubernetes** est une version packagée de Kubernetes, souvent accompagnée d’outils, configurations, interfaces, et services intégrés pour simplifier l’installation, la gestion, la sécurité et la montée en charge.
+
+---
+
+## 🏆 Distributions Kubernetes populaires
+
+| Distribution                       | Particularités principales                                            | Usage courant                            |
+| ---------------------------------- | --------------------------------------------------------------------- | ---------------------------------------- |
+| **Vanilla Kubernetes**             | Kubernetes "pur", installé manuellement ou via kops/kubeadm.          | Pour contrôle total, customisation.      |
+| **OpenShift (Red Hat)**            | Kubernetes + outils DevOps, sécurité renforcée, interface web.        | Entreprises, plateformes cloud.          |
+| **Rancher (SUSE)**                 | Plateforme multi-cluster, interface centralisée, gestion multi-cloud. | Gestion multi-cluster et multi-cloud.    |
+| **Google Kubernetes Engine (GKE)** | Kubernetes managé par Google, intégration cloud native.               | Cloud public, simplicité et scalabilité. |
+| **Amazon EKS**                     | Kubernetes managé par AWS, intégration services AWS.                  | Cloud AWS, production sécurisée.         |
+| **Azure AKS**                      | Kubernetes managé par Microsoft Azure.                                | Cloud Azure, intégration Azure DevOps.   |
+| **K3s (Rancher Labs)**             | Kubernetes allégé, très léger (pour edge, IoT, dev local).            | IoT, edge computing, petites infra.      |
+| **MicroK8s (Canonical)**           | Kubernetes léger, simple à installer, bonne pour dev et edge.         | Développement local, petits clusters.    |
+
+---
+
+## 🔍 Comment choisir sa distribution ?
+
+* **Cloud managé** (GKE, EKS, AKS) → simplicité, maintenance réduite.
+* **Enterprise** (OpenShift, Rancher) → sécurité, support, fonctionnalités avancées.
+* **Edge / IoT / Développement** (K3s, MicroK8s) → légèreté, rapidité d’installation.
+* **Contrôle total** (Vanilla K8s) → personnalisation maximale.
+
+---
