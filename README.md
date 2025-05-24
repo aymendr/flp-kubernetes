@@ -323,3 +323,78 @@ Une **distribution Kubernetes** est une version packagée de Kubernetes, souvent
 * **Contrôle total** (Vanilla K8s) → personnalisation maximale.
 
 ---
+
+
+
+## 📦 Versions de Kubernetes
+
+* Kubernetes suit un cycle de release **trimestriel** (environ tous les 3-4 mois).
+* Chaque version est numérotée sous la forme : `vX.Y.Z`
+
+  * `X` = version majeure
+  * `Y` = version mineure
+  * `Z` = patch/correctif
+* Exemples : `v1.23.5`, `v1.24.0`
+
+### Support des versions
+
+* Chaque version majeure est supportée **environ 1 an** (3 versions mineures).
+* Les patchs corrigent bugs et failles de sécurité.
+* Il est recommandé de toujours utiliser une version **récente** pour bénéficier des dernières fonctionnalités et corrections.
+
+---
+
+## ⚙️ API Kubernetes
+
+* Kubernetes expose une API RESTful pour contrôler toutes les ressources (Pods, Services, Deployments, etc.).
+* L’API est versionnée :
+
+  * `v1` (stable)
+  * `v1beta1`, `v1alpha1` (fonctionnalités expérimentales)
+* Les objets sont définis en YAML ou JSON et envoyés à l’API via `kubectl` ou directement.
+
+### Exemple d’URL API
+
+```plaintext
+https://<kube-apiserver>/api/v1/namespaces/default/pods/mypod
+```
+
+---
+
+## 📜 Gestion de la compatibilité API
+
+* Certaines APIs évoluent ou sont dépréciées (ex: `extensions/v1beta1` → `apps/v1` pour les Deployments).
+
+* Kubernetes suit un processus de **dépréciation progressive** :
+
+  1. API introduite en alpha/beta.
+  2. Passée en stable.
+  3. Dépréciée (plus recommandée).
+  4. Supprimée dans une version future.
+
+* Il est important de **mettre à jour** ses manifests YAML régulièrement.
+
+---
+
+## 🛠️ Exemples d’API Kubernetes courantes
+
+| Ressource   | API Group | Version |
+| ----------- | --------- | ------- |
+| Pod         | core      | v1      |
+| Deployment  | apps      | v1      |
+| StatefulSet | apps      | v1      |
+| DaemonSet   | apps      | v1      |
+| Service     | core      | v1      |
+| ConfigMap   | core      | v1      |
+| Secret      | core      | v1      |
+
+---
+
+## 💡 Bonnes pratiques
+
+* Toujours valider la version de Kubernetes cible avant déploiement.
+* Surveiller les dépréciations dans les notes de version officielles.
+* Utiliser des outils comme `kubectl convert` ou `kubeval` pour valider et convertir les manifests.
+* Garder les manifests à jour avec les dernières versions d’API.
+
+---
