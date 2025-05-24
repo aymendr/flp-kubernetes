@@ -248,3 +248,48 @@ Elle devient indispensable quand on passe de quelques conteneurs à **des dizain
 | **Nomad** (HashiCorp) | Léger, multi-workload (containers + VMs + autres)             |
 
 ---
+
+## 🐳 Qu’est-ce que Kubernetes ?
+
+* **Kubernetes** (ou **K8s**) est une plateforme open-source d’**orchestration de conteneurs**.
+* Créé initialement par Google, il est aujourd’hui géré par la Cloud Native Computing Foundation (CNCF).
+* Il permet de **déployer, gérer, scaler et monitorer des applications conteneurisées** à grande échelle.
+
+---
+
+## ⚙️ Composants clés de Kubernetes
+
+| Composant              | Rôle principal                                                                              |
+| ---------------------- | ------------------------------------------------------------------------------------------- |
+| **Master**             | Planifie, contrôle et orchestre le cluster. Gère API Server, Scheduler, Controller Manager. |
+| **Node (Worker)**      | Exécute les conteneurs (via kubelet et container runtime comme Docker).                     |
+| **Pod**                | Plus petite unité déployable, contient un ou plusieurs containers liés.                     |
+| **Service**            | Point d’accès stable pour un ensemble de pods (load balancing, découverte).                 |
+| **Deployment**         | Gère la mise à jour et la mise à l’échelle des pods.                                        |
+| **ConfigMap & Secret** | Gestion des configurations et des données sensibles.                                        |
+
+---
+
+## 🔑 Fonctionnalités principales de Kubernetes
+
+* **Gestion du cycle de vie** : déploiement, mise à jour (rolling update), rollback.
+* **Mise à l’échelle automatique** (Horizontal Pod Autoscaler).
+* **Auto-réparation** : redémarrage des containers en cas d’échec.
+* **Load balancing** et découverte de services.
+* **Orchestration de volumes** pour stockage persistant.
+* **Sécurité** avec contrôle d’accès RBAC, Network Policies.
+* **Support multi-cloud et hybride**.
+
+---
+
+## 🛠️ Utilisation de base
+
+```bash
+kubectl apply -f mon-deploiement.yaml    # déployer une application
+kubectl get pods                          # lister les pods
+kubectl logs pod-nom                      # consulter logs
+kubectl scale deployment/mon-deploiement --replicas=5   # scaler
+kubectl delete pod pod-nom                # supprimer un pod
+```
+
+---
